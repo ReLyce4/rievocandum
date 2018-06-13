@@ -27,19 +27,19 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary static-top">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#"><?=env('APP_NAME')?></a>
+        <a class="navbar-brand" href="<?=env('APP_URL')?>"><?=env('APP_NAME')?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar-menu">
           <ul class="navbar-nav">
             <li class="navbar-item">
-              <a class="nav-link" href="#">Sign In</a>
+              <a class="nav-link" href="#">Login</a>
             </li>
             <li class="navbar-item">
-              <a class="nav-link" href="#">Sign Up</a>
+              <a class="nav-link" href="#">Logout</a>
             </li>
           </ul>
         </div>
