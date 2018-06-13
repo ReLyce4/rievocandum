@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="{{ URL::asset('css/landing-page.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/landing-page.css') }}" rel="stylesheet">
 
   </head>
 

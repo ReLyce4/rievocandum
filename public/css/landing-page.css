@@ -12,6 +12,10 @@ h6 {
   font-weight: 700;
 }
 
+.collapse.navbar-collapse {
+  flex-grow: 0;
+}
+
 header.masthead {
   position: relative;
   background-color: #343a40;
