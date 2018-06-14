@@ -1,5 +1,7 @@
 :root {
-  --primary: #1B93FD;
+  --blue: #1B93FD;
+  /*--dark-blue: rgb(32, 131, 218);*/
+  --light-blue: rgb(65, 166, 255);
 }
 
 body {
@@ -17,7 +19,7 @@ h6 {
 }
 
 a {
-  color: var(--primary);
+  color: var(--blue);
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -28,28 +30,55 @@ a {
   flex-grow: 0;
 }
 
-.bg-primary {
-  background-color: var(--primary) !important;
+.bg-blue {
+  background-color: var(--blue) !important;
 }
 
-.btn-primary {
-  background-color: var(--primary);
-  border-color: var(--primary);
+.bg-light-blue {
+  background-color: var(--light-blue) !important;
 }
 
-.btn-primary.disabled, .btn-primary:disabled {
-  background-color: var(--primary);
-  border-color: var(--primary);
+.btn-blue {
+  background-color: var(--blue);
+  border-color: var(--blue);
 }
 
-.text-primary {
-  color: var(--primary) !important;
+.btn-light-blue {
+  background-color: var(--light-blue);
+  border-color: var(--light-blue);
+  color: #FFFFFF;
+}
+
+.btn-light-blue:hover {
+  color: #FFFFFF;
+}
+
+.btn-blue.disabled, .btn-blue:disabled {
+  background-color: var(--blue);
+  border-color: var(--blue);
+}
+
+.btn-light-blue.disabled, .btn-light-blue:disabled {
+  background-color: var(--light-blue);
+  border-color: var(--light-blue);
+}
+
+.text-blue {
+  color: var(--blue) !important;
+}
+
+.text-light-blue {
+  color: var(--light-blue) !important;
+}
+
+.shadow-bottom {
+  box-shadow: 0px 2px 10px black;
 }
 
 header.masthead {
   position: relative;
-  background-color: #343a40;
-  background: url("../img/bg-masthead.jpg") no-repeat center center;
+  background-color: var(--blue);
+  /* background: url("../img/bg-masthead.jpg") no-repeat center center; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -60,7 +89,6 @@ header.masthead {
 
 header.masthead .overlay {
   position: absolute;
-  background-color: #212529;
   height: 100%;
   width: 100%;
   top: 0;

@@ -27,7 +27,7 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-blue fixed-top" id="navbar">
       <div class="container">
         <a class="navbar-brand" href="<?=env('APP_URL')?>"><?=env('APP_NAME')?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu">
@@ -54,7 +54,7 @@
               Our goal is to give you tools based on the 
               SRS(Spaced Repetition System) in order to improve the way you learn
             </p>
-            <a class="btn btn-primary" href="#">Find out more</a>
+            <a class="btn btn-light-blue" href="#">Find out more</a>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@
           <div class="col-lg-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="icon-screen-desktop m-auto text-primary"></i>
+                <i class="icon-screen-desktop m-auto text-blue"></i>
               </div>
               <h3>Fully Responsive</h3>
               <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
@@ -76,7 +76,7 @@
           <div class="col-lg-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="icon-layers m-auto text-primary"></i>
+                <i class="icon-layers m-auto text-blue"></i>
               </div>
               <h3>Bootstrap 4 Ready</h3>
               <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
@@ -85,7 +85,7 @@
           <div class="col-lg-4">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
+                <i class="icon-check m-auto text-blue"></i>
               </div>
               <h3>Easy to Use</h3>
               <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
@@ -168,7 +168,7 @@
                   <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
                 </div>
                 <div class="col-12 col-md-3">
-                  <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+                  <button type="submit" class="btn btn-block btn-lg btn-blue">Sign up!</button>
                 </div>
               </div>
             </form>
@@ -227,7 +227,18 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
+    <script>
+      window.onscroll = function() {shadowOnScroll()};
+      function shadowOnScroll() {
+          if ((document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) && typeof document.getElementsByClassName("navbar") !== 'undefined') {
+            var navbar = document.getElementById("navbar");
+            navbar.classList.add("shadow-bottom");
+          } else {
+            var navbar = document.getElementById("navbar");
+            navbar.classList.remove("shadow-bottom");
+          }
+      }
+    </script>
   </body>
 
 </html>
