@@ -227,18 +227,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script>
-      window.onscroll = function() {shadowOnScroll()};
-      function shadowOnScroll() {
-          if ((document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) && typeof document.getElementsByClassName("navbar") !== 'undefined') {
-            var navbar = document.getElementById("navbar");
-            navbar.classList.add("shadow-bottom");
-          } else {
-            var navbar = document.getElementById("navbar");
-            navbar.classList.remove("shadow-bottom");
-          }
-      }
-    </script>
+    <script src="{{ URL::asset('js/shadow-on-scroll.js') }}"></script>
   </body>
 
 </html>
