@@ -1,3 +1,7 @@
+:root {
+  --primary: #1B93FD;
+}
+
 body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -12,8 +16,34 @@ h6 {
   font-weight: 700;
 }
 
+a {
+  color: var(--primary);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #FFFFFF;
+}
+
 .collapse.navbar-collapse {
   flex-grow: 0;
+}
+
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.text-primary {
+  color: var(--primary) !important;
 }
 
 header.masthead {
