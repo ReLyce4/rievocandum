@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Christian Gritto">
 
-    <title><?=env('APP_NAME')?></title>
+    <title>{{ env('APP_NAME') }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -29,7 +29,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-blue fixed-top" id="navbar">
       <div class="container">
-        <a class="navbar-brand" href="<?=env('APP_URL')?>"><?=env('APP_NAME')?></a>
+        <a class="navbar-brand" href="{{ env('APP_URL') }}">{{ env('APP_NAME') }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -199,7 +199,7 @@
                 <a href="#">Privacy Policy</a>
               </li>
             </ul>
-            <p class="text-muted small mb-4 mb-lg-0">&copy; Rievocandum 2018. All Rights Reserved.</p>
+            <p class="text-muted small mb-4 mb-lg-0">&copy; {{ env('APP_NAME') }} 2018. All Rights Reserved.</p>
           </div>
           <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
             <ul class="list-inline mb-0">
