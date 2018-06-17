@@ -22,8 +22,12 @@ a {
   color: var(--blue);
 }
 
+.intro {
+  font-size: 1em;
+}
+
 .navbar-dark .navbar-nav .nav-link {
-  color: #FFFFFF;
+  color: white;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover{
@@ -46,13 +50,13 @@ a {
 .btn-blue {
   background-color: var(--blue);
   border-color: var(--blue);
-  color: #FFFFFF;
+  color: white;
 }
 
 .btn-light-blue {
   background-color: var(--light-blue);
   border-color: var(--light-blue);
-  color: #FFFFFF;
+  color: white;
 }
 
 .btn:hover {
@@ -64,11 +68,11 @@ a {
 }
 
 .btn-blue:hover {
-  color: #FFFFFF;
+  color: white;
 }
 
 .btn-light-blue:hover {
-  color: #FFFFFF;
+  color: white;
 }
 
 .btn-blue.disabled, .btn-blue:disabled {

@@ -49,12 +49,12 @@
       <div class="container">
         <div class="row">
           <div class="col-xl-9 mx-auto">
-            <h1>Learn smarter with Rievocandum</h1>
+            <h1 class="mb-4">Learn smarter with Rievocandum</h1>
             <p>
-              Our goal is to give you tools based on the 
-              SRS(Spaced Repetition System) in order to improve the way you learn
+              Diventa un membro della nostra comunità di apprendimento<br />Troverai note su un grande numero di argomenti  
+              e otterrai l'accesso ai<br /> nostri strumenti basati sull'SRS(Spaced Repetition System)
             </p>
-            <a class="btn btn-light-blue" href="#">Find out more</a>
+            <a class="btn btn-light-blue" href="#">Scopri di più</a>
           </div>
         </div>
       </div>
