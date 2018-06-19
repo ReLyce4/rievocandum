@@ -184,8 +184,8 @@ header.masthead h1 {
 
 .call-to-action {
   position: relative;
-  background-color: #343a40;
-  background: url("../img/bg-masthead.jpg") no-repeat center center;
+  background-color: #f8f9fa;
+  /* background: url("../img/bg-masthead.jpg") no-repeat center center; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

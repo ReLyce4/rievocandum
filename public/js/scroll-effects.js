@@ -1,3 +1,4 @@
+//Shadow on scroll
 element_id = "navbar"; //ID of the element in which do you want to add shadow
 
 window.onscroll = function() {shadowBottomOnScroll(element_id)};
@@ -9,4 +10,13 @@ window.onscroll = function() {shadowBottomOnScroll(element_id)};
             var element = document.getElementById(id);
             element.classList.remove("shadow-bottom");
           }
-	}
+  }
+  
+  //Smooth scroll on anchor link
+  $(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+
+    $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top
+    }, 500);
+});
