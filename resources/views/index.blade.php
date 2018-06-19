@@ -167,7 +167,7 @@
                 -->
 
     <!-- Call to Action -->
-    <section class="call-to-action text-center">
+    <section class="call-to-action bg-light text-center">
       <div class="container">
         <div class="row">
           <div class="col-xl-9 mx-auto">
@@ -181,11 +181,11 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer bg-light">
+    <footer class="footer">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-            <ul class="list-inline mb-2">
+<!--            <ul class="list-inline mb-2">
               <li class="list-inline-item">
                 <a href="#">About</a>
               </li>
@@ -201,7 +201,7 @@
               <li class="list-inline-item">
                 <a href="#">Privacy Policy</a>
               </li>
-            </ul>
+            </ul> -->
             <p class="text-muted small mb-4 mb-lg-0">&copy; {{ env('APP_NAME') }} 2018. All Rights Reserved.</p>
           </div>
           <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
