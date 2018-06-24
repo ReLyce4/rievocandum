@@ -11,8 +11,14 @@
 |
 */
 
-Route::get('/', 'LandingController@index');
-
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/landing', 'LandingController@index')->name('landing');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function () {
+	if(Auth::check()) {
+		return redirect('home');
+	} else {
+		return redirect('landing');
+	}
+});
