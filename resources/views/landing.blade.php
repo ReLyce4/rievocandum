@@ -135,7 +135,7 @@
             <h2 class="mb-4">Diventa parte della nostra community!</h2>
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <button type="submit" class="btn btn-lg btn-blue">Registrati</button>
+            <a class="btn btn-lg btn-blue" href="{{ url('register') }}">Registrati</a>
           </div>
         </div>
       </div>
