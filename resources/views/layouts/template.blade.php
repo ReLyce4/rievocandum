@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Christian Gritto">
 
-    <title>{{ env('APP_NAME') }} | {{ $pageTitle }}</title>
+    <title>{{ env('APP_NAME') }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -35,18 +35,33 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbar-menu">
 				<ul class="navbar-nav text-center">
-					@unless (Auth::check())
+					@guest
 					<li class="navbar-item">
 					<a class="nav-link mx-2" href="{{ url('login') }}">Accedi</a>
 					</li>
 					<li class="navbar-item">
 					<a class="nav-link mx-2" href="{{ url('register') }}">Registrati</a>
 					</li>
-					@else
-					<li class="navbar-item">
-						<a class="nav-link mx-2" href="{{ url('profile/'.$user['name']) }}">{{ $user['name'] }}</a>
+					@endguest
+					@auth
+					<li class="navbar-item dropdown">
+						<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+							{{ Auth::user()->name }} <span class="caret"></span>
+						</a>
+
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="{{ route('logout') }}"
+							   onclick="event.preventDefault();
+											 document.getElementById('logout-form').submit();">
+								Esci
+							</a>
+
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								@csrf
+							</form>
+						</div>
 					</li>
-					@endunless
+					@endauth
 				</ul>
 				</div>
 			</div>

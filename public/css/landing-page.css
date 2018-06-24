@@ -59,7 +59,7 @@ a {
   color: white;
 }
 
-.btn:hover {
+.btn-blue:hover, .btn-light-blue:hover {
   box-shadow: 0px 0px 10px black;
 }
 

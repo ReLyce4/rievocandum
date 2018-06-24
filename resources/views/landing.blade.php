@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+@extends ('layouts.template')
 
-@include ('includes.head')
-
-  <body>
-
-    @include ('includes.nav')
+@section ('content')
 
     <!-- Masthead -->
     <header class="masthead text-white text-center">
@@ -126,7 +121,7 @@
       </div>
     </section>
                 -->
-  @unless (Auth::check())
+  @guest
     <!-- Call to Action -->
     <section class="call-to-action bg-light text-center">
       <div class="container">
@@ -140,12 +135,9 @@
         </div>
       </div>
     </section>
-  @else
+  @endguest
+  @auth
     <hr />
-  @endunless
+  @endauth
 
-  @include ('includes.footer')
-
-  </body>
-
-</html>
+@endsection
