@@ -121,8 +121,17 @@
 			<!-- JavaScript includes -->
 			<script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
 			<script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+			<script src="{{ URL::asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+			<script src="{{ URL::asset('vendor/unisharp/ckfinder/ckfinder.js') }}"></script>
 			<script src="{{ URL::asset('js/scroll-effects.js') }}"></script>
-		
+			<script>
+				var editor = CKEDITOR.replace('editor');
+				CKFinder.setupCKEditor( editor );
+
+				CKEDITOR.instances.editor.on( 'save', function() {    
+        		alert("Hai salvato");
+        		});
+			</script>
 
   </body>
 
