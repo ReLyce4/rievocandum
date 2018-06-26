@@ -26,7 +26,7 @@
           <div class="col-lg-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="fa fa-edit m-auto text-blue"></i>
+                <i class="icon-document m-auto text-blue"></i>
               </div>
               <h3>Appunti</h3>
               <p class="lead mb-0">Crea i tuoi appunti o ottieni l'accesso a quelli di tanti studenti sugli argomenti che ti interessano</p>
@@ -35,7 +35,7 @@
           <div class="col-lg-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="ti-alarm-clock m-auto text-blue"></i>
+                <i class="icon-stop-watch3 m-auto text-blue"></i>
               </div>
               <h3>SRS</h3>
               <p class="lead mb-0">Gestisci al meglio le tue sessioni di studio ricevendo una notifica nel memonto migliore in cui praticarle</p>
@@ -44,7 +44,7 @@
           <div class="col-lg-4">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="fa fa-sticky-note-o m-auto text-blue"></i>
+                <i class="icon-note m-auto text-blue"></i>
               </div>
               <h3>Flashcard/Quiz</h3>
               <p class="lead mb-0">Utilizza un potente strumento di creazione delle flashcard strutturate con lo schema domanda-risposta</p>

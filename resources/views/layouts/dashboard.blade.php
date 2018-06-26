@@ -58,7 +58,12 @@
                         <a href="#"><i class="menu-icon ti-user"></i>Profilo</a>
                     </li>
                     <li>
-                        <a href="#"><i class="menu-icon ti-power-off"></i>Logout</a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <i class="menu-icon ti-power-off"></i>Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
 
                     <!-- /.menu-title -->
@@ -129,7 +134,12 @@
                         </a>
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="#">Profilo</a>
-                            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								@csrf
+							</form>
                         </div>
                     </div>
                 </div>
