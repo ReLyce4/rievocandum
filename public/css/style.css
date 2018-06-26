@@ -1,0 +1,15 @@
+.hawcons {
+	font-size: 21px;
+}
+
+.navbar .navbar-nav li > a {
+	font-size: 16px;
+}
+
+.open aside.left-panel .navbar .navbar-nav li a .menu-icon.hawcons {
+	font-size: 26px;
+}
+
+.open aside.left-panel .navbar .navbar-nav li a .menu-icon {
+	font-size: 21px;
+}
