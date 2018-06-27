@@ -45,10 +45,9 @@
                 <a class="navbar-brand" href="{{ env('APP_URL') }}">{{ env('APP_NAME') }}</a>
                 <a class="navbar-brand hidden" href="{{ env('APP_URL') }}">R</a>
             </div>
-
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active">
+                    <li>
                         <a href="{{ env('APP_URL') }}"> <i class="menu-icon ti-home"></i>Home</a>
                     </li>
 
@@ -123,10 +122,10 @@
 
             <div class="header-menu">
 
-                <div class="col-sm-7">
+                <div class="col-sm-7" style="display:flex;align-items:center;flex-wrap:wrap;">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <span><b>Rievocandum</b></span>
                 </div>
-
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right" class="vertical-align:middle;">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -156,7 +155,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="{{ URL::asset('sufee/js/plugins.js') }}"></script>
     <script src="{{ URL::asset('sufee/js/main.js') }}"></script>
-
+    <script src="{{ URL::asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ URL::asset('vendor/unisharp/ckfinder/ckfinder.js') }}"></script>
 
     <!-- <script src="{{ URL::asset('sufee/js/lib/chart-js/Chart.bundle.js') }}"></script> -->
     <script src="{{ URL::asset('sufee/js/dashboard.js') }}"></script>
@@ -183,6 +183,15 @@
             } );
         } )( jQuery );
     </script>
+
+    <!-- <script>
+        var editor = CKEDITOR.replace('editor');
+        CKFinder.setupCKEditor( editor );
+
+        CKEDITOR.instances.editor.on( 'save', function() {    
+        alert("Hai salvato");
+        });
+    </script> -->
 
 </body>
 </html>
