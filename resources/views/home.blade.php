@@ -22,10 +22,10 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row no-margin-x">
             <div class="col-md-6">
                 <div class="profile-nav alt">
-                    <div class="card mx-2">
+                    <div class="card">
                         <div class="card-header user-header alt bg-dark">
                             <div class="media">
                                 <div class="media-body">
@@ -50,7 +50,7 @@
             
             <div class="col-md-6">
                 <div class="profile-nav alt">
-                    <div class="card mx-2">
+                    <div class="card">
                         <div class="card-header user-header alt bg-dark">
                             <div class="media">
                                 <div class="media-body">

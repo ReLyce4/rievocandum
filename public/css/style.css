@@ -13,3 +13,8 @@
 .open aside.left-panel .navbar .navbar-nav li a .menu-icon {
 	font-size: 21px;
 }
+
+.no-margin-x {
+	margin-left:0;
+	margin-right:0;
+}
