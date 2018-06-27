@@ -52,9 +52,9 @@
                     </li>
 
                     <!-- /.menu-title -->
-                    <h3 class="menu-title">{{ Auth::user()->name }}</h3>
+                    <h3 class="menu-title">Utente</h3>
                     <li>
-                        <a href="#"><i class="menu-icon ti-user"></i>Profilo</a>
+                        <a href="{{ route('profile', ['name' => Auth::user()->name]) }}"><i class="menu-icon ti-user"></i>Profilo</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -122,9 +122,9 @@
 
             <div class="header-menu">
 
-                <div class="col-sm-7" style="display:flex;align-items:center;flex-wrap:wrap;">
+                <div class="col-sm-7 center-y">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                    <span><b>Rievocandum</b></span>
+                    <span><b>Ciao {{ Auth::user()->name }}</b></span>
                 </div>
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right" class="vertical-align:middle;">

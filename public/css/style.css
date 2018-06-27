@@ -18,3 +18,41 @@
 	margin-left:0;
 	margin-right:0;
 }
+
+.img__wrap {
+	position: relative;
+	vertical-align: middle;
+	height: 100px;
+	width: 100px;
+  }
+  
+  .img__description {
+	position: absolute;
+	top: 35%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	color: #fff;
+	visibility: hidden;
+	opacity: 0;
+  
+	/* transition effect. not necessary */
+	transition: opacity .2s, visibility .2s;
+  }
+  
+  .img__wrap:hover .img__description {
+	visibility: visible;
+	opacity: 1;
+	cursor: pointer;
+  }
+
+  .img__wrap:hover .img__img {
+	  opacity: 0.3;
+  }
+
+.center-y {
+	display:flex;
+	align-items:center;
+	flex-wrap:wrap;
+}

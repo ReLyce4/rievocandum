@@ -14,6 +14,7 @@
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/landing', 'LandingController@index')->name('landing');
 Auth::routes();
+Route::get('/profile/{name}', 'ProfileController@show')->name('profile');
 
 Route::get('/', function () {
 	if(Auth::check()) {
