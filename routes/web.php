@@ -16,6 +16,11 @@ Route::get('/landing', 'LandingController@index')->name('landing');
 Auth::routes();
 Route::get('/profile/{name}', 'ProfileController@show')->name('profile');
 
+Route::get('note/add', function () {
+	return view('notes.add');
+})->name('note.add');
+Route::post('note/save', 'NoteController@save')->name('note.save');
+
 Route::get('/', function () {
 	if(Auth::check()) {
 		return redirect('home');

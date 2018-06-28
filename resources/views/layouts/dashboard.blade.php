@@ -6,6 +6,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="APP_URL" content="{{ env('APP_URL') }}">
     <title>Rievocandum</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +33,6 @@
 
 </head>
 <body>
-
 
         <!-- Left Panel -->
 
@@ -68,7 +69,7 @@
                     <!-- /.menu-title -->
                     <h3 class="menu-title">Appunti</h3>
                     <li>
-                        <a href="#"><i class="menu-icon hawcons icon-document-add"></i>Scrivi appunti</a>
+                        <a href="{{ route('note.add') }}"><i class="menu-icon hawcons icon-document-add"></i>Scrivi appunti</a>
                     </li>
                     <li>
                         <a href="#"><i class="menu-icon hawcons icon-document-list"></i>Lista appunti</a>
@@ -151,7 +152,7 @@
         </main>
     <!-- Right Panel -->
 
-    <script src="{{ URL::asset('sufee/js/vendor/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="{{ URL::asset('sufee/js/plugins.js') }}"></script>
     <script src="{{ URL::asset('sufee/js/main.js') }}"></script>
@@ -165,6 +166,7 @@
     <script src="{{ URL::asset('sufee/js/lib/vector-map/jquery.vmap.min.js') }}"></script>
     <script src="{{ URL::asset('sufee/js/lib/vector-map/jquery.vmap.sampledata.js') }}"></script>
     <script src="{{ URL::asset('sufee/js/lib/vector-map/country/jquery.vmap.world.js') }}"></script>
+    <script src="{{ URL::asset('js/editor.js') }}"></script>
     <script>
         ( function ( $ ) {
             "use strict";
@@ -183,15 +185,5 @@
             } );
         } )( jQuery );
     </script>
-
-    <!-- <script>
-        var editor = CKEDITOR.replace('editor');
-        CKFinder.setupCKEditor( editor );
-
-        CKEDITOR.instances.editor.on( 'save', function() {    
-        alert("Hai salvato");
-        });
-    </script> -->
-
 </body>
 </html>
