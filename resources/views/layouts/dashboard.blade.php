@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ URL::asset('sufee/css/lib/vector-map/jqvmap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/hawcons.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('vendor/tags-input-master/tags-input.css') }}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -166,6 +167,7 @@
     <script src="{{ URL::asset('sufee/js/lib/vector-map/jquery.vmap.min.js') }}"></script>
     <script src="{{ URL::asset('sufee/js/lib/vector-map/jquery.vmap.sampledata.js') }}"></script>
     <script src="{{ URL::asset('sufee/js/lib/vector-map/country/jquery.vmap.world.js') }}"></script>
+    <script src="{{ URL::asset('vendor/tags-input-master/tags-input.js') }}"></script>
     <script src="{{ URL::asset('js/editor.js') }}"></script>
     <script>
         ( function ( $ ) {
@@ -184,6 +186,10 @@
                 normalizeFunction: 'polynomial'
             } );
         } )( jQuery );
+
+		for (let input of document.querySelectorAll('input[type="tags"]')) {
+			tagsInput(input);
+		}
     </script>
 </body>
 </html>

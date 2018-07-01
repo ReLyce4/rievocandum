@@ -5,17 +5,37 @@ namespace App\Http\Controllers;
 use App\Note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class NoteController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function addInfo()
     {
-        //
+        return view('notes.addInfo');
+    }
+
+    /**
+    * @param  \Illuminate\Http\Request  $request
+    */
+    public function write(Request $request)
+    {
+        $note = new note();
+        $fileName = $request->input('fileName');
+        $userId = Auth::user()->id;
+        $data['fileName'] = $fileName;
+        if($note->fileNameExists($fileName, $userId)) {
+            $data['editorData'] = $note->show($fileName, $userId);
+            return view('notes.write', $data)->withErrors(['msg' => 'Esiste già una nota con questo nome']);
+        } else {
+            $note->create($fileName, $userId);
+            return view('notes.write', $data);
+        }
     }
 
     /**
@@ -36,13 +56,14 @@ class NoteController extends Controller
      */
     public function save(Request $request)
     {
-        $editorFileName = $request->input('editorFileName');
+        $fileName = $request->input('fileName');
         $editorData = $request->input('editorData');
-        //$editorFileName = "b";
+        //$fileName = "a";
         //$editorData = "<p>b</p>";
-        $userName = Auth::user()->name;
+        $userId = Auth::user()->id;
         $note = new Note();
-        $note->storage($editorFileName, $editorData, $userName);
+        $note->storage($fileName, $editorData, $userId);
+        return date('d F Y H:i:s');
     }
 
     /**

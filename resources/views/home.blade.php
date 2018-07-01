@@ -35,7 +35,7 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <a href="#"><i class="hawcons icon-document-add"></i> Scrivi appunti</a>
+                                <a href="{{ route('note.add') }}"><i class="hawcons icon-document-add"></i> Scrivi appunti</a>
                             </li>
                             <li class="list-group-item">
                                 <a href="#"><i class="hawcons icon-document-list"></i> Lista appunti</a>
