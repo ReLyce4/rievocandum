@@ -16,7 +16,7 @@ jQuery( document ).ready(function() {
 						dataType : "text",
 						type: "POST",
 						url : APP_URL + "/note/save",
-						data :  { editorData : editorData, noteFileName : jQuery('#noteFileName').val() },
+						data :  { editorData : editorData, fileName : jQuery('#fileName').val() },
 						success: function (response) {
 							jQuery('#save-datetime').text('Ultimo salvataggio automatico: ' + response);
 						},
@@ -26,6 +26,6 @@ jQuery( document ).ready(function() {
 					});
 				}
 			}, 3000);
-		}, 2000);
+		}, 1000);
 	}
 });

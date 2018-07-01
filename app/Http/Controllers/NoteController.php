@@ -3,49 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Note;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class NoteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    public function addInfo()
-    {
+
+    public function addInfo() {
         return view('notes.addInfo');
     }
-
     /**
     * @param  \Illuminate\Http\Request  $request
     */
     public function write(Request $request)
     {
-        $note = new note();
+        $noteModel = new Note();
+        $categoryModel = new Category();
+
         $fileName = $request->input('fileName');
+        $category = $request->input('category');
         $userId = Auth::user()->id;
+
         $data['fileName'] = $fileName;
-        if($note->fileNameExists($fileName, $userId)) {
-            $data['editorData'] = $note->show($fileName, $userId);
+        
+        if($noteModel->fileNameExists($fileName, $userId)) {
+            $data['editorData'] = $noteModel->show($fileName, $userId);
+            $data['category'] = $categoryModel->getCategoryByFileName($fileName);
             return view('notes.write', $data)->withErrors(['msg' => 'Esiste già una nota con questo nome']);
         } else {
-            $note->create($fileName, $userId);
+            $categoryModel->create($category);
+            $data['category'] = $category;
+            $categoryId = $categoryModel->getId($category);
+            $noteModel->create($fileName, $userId, $categoryId);
             return view('notes.write', $data);
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -58,56 +51,12 @@ class NoteController extends Controller
     {
         $fileName = $request->input('fileName');
         $editorData = $request->input('editorData');
-        //$fileName = "a";
-        //$editorData = "<p>b</p>";
         $userId = Auth::user()->id;
-        $note = new Note();
-        $note->storage($fileName, $editorData, $userId);
+
+        $noteModel = new Note();
+
+        $noteModel->storage($fileName, $editorData, $userId);
+
         return date('d F Y H:i:s');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

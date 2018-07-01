@@ -10,7 +10,6 @@ class Note extends Model
 {
     public function storage($fileName, $editorData, $userId) {
         Storage::put('notes/'.$userId.'/'.$fileName, $editorData);
-        //DB::table('notes')->where([''])
     }
 
     public function fileNameExists($fileName, $userId) {
@@ -28,9 +27,9 @@ class Note extends Model
         }
     }
 
-    public function create($fileName, $userId) {
+    public function create($fileName, $userId, $categoryId) {
         DB::table('notes')->insert(
-            ['file_name' => $fileName, 'user_id' => $userId]
+            ['file_name' => $fileName, 'user_id' => $userId, 'category_id' => $categoryId]
         );
         if(!(Storage::disk('local')->exists('notes/'.$userId.'/'.$fileName))) {
             $this->storage($fileName, "", $userId);
@@ -43,5 +42,15 @@ class Note extends Model
 
     public function remove($fileName, $userId) {
         DB::table('notes')->where(['file_name' => $fileName], ['user_id' => $userId])->delete();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
     }
 }

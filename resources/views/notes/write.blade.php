@@ -20,6 +20,7 @@
 	</div>
 </div>
 <div class="container">
+	<h4>Categoria: {{ $category }}</h4>
 	@if($errors->any())
 	<div class="alert alert-warning alert-dismissible fade show my-2" role="alert">
 		{{$errors->first()}}

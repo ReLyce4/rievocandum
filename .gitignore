@@ -12,3 +12,4 @@ npm-debug.log
 yarn-error.log
 *.bat
 .DS_Store
+resources/views/notes/addInfo.blade.php.backup

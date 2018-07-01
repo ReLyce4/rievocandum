@@ -13,7 +13,7 @@
 		<div class="page-header float-right">
 			<div class="page-title">
 				<ol class="breadcrumb text-right">
-					<li class="active">Scrivi appunti</li>
+					<li class="active">Aggiungi info</li>
 				</ol>
 			</div>
 		</div>
@@ -24,11 +24,9 @@
 		@csrf
 		<div style="max-width:400px">
 			<label>Nome documento</label>
-			<input class="form-control my-2" type="text" name="fileName" placeholder="Inserisci nome documento" required><br>
+			<input class="form-control my-2" type="text" name="fileName" placeholder="Inserisci nome documento" required>
 			<label>Nome categoria</label>
-			<input class="form-control my-2" type="text" name="category" placeholder="Inserisci categoria" required><br>
-			<label>Tag separati da virgola</label>
-			<input class="form-control" type="tags" id="tags" placeholder="Inserisci tag"><br>
+			<input class="form-control my-2" type="text" name="category" placeholder="Inserisci nome categoria" required>
 			<button class="btn btn-primary my-4" type="submit">Scegli nome</button>
 		</div>
 	</form>

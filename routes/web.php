@@ -20,7 +20,7 @@ Route::get('note/add', 'NoteController@addInfo')->name('note.add');
 Route::post('note/add', 'NoteController@write')->name('note.add');
 
 Route::post('note/save', 'NoteController@save')->name('note.save');
-Route::get('note/save', 'NoteController@save')->name('note.save');
+//Route::get('note/save', 'NoteController@save')->name('note.save');
 
 Route::get('/', function () {
 	if(Auth::check()) {
