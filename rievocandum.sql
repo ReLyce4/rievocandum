@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2018 at 10:51 AM
+-- Generation Time: Jul 02, 2018 at 03:32 PM
 -- Server version: 5.7.17
 -- PHP Version: 7.1.3
 
@@ -89,21 +89,9 @@ INSERT INTO `notes` (`id`, `file_name`, `created_at`, `updated_at`, `user_id`, `
 (22, 'aaaa', '2018-07-01 19:42:52', '2018-07-01 19:42:52', 1, 4),
 (23, 'aa', '2018-07-01 19:50:00', '2018-07-01 19:50:00', 1, 4),
 (24, 'aaa', '2018-07-01 19:50:25', '2018-07-01 19:50:25', 1, 4),
-(26, 'a', '2018-07-02 08:22:02', '2018-07-02 08:22:02', 1, 1),
 (27, 'a', '2018-07-02 08:22:31', '2018-07-02 08:22:31', 2, 2),
-(28, 'giuseppe', '2018-07-02 08:23:48', '2018-07-02 08:23:48', 2, 5);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `note_tag`
---
-
-CREATE TABLE `note_tag` (
-  `id` int(11) NOT NULL,
-  `note_id` int(11) NOT NULL,
-  `tag_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
+(28, 'giuseppe', '2018-07-02 08:23:48', '2018-07-02 08:23:48', 2, 5),
+(29, 'a', '2018-07-02 13:29:58', '2018-07-02 13:29:58', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -116,19 +104,6 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tags`
---
-
-CREATE TABLE `tags` (
-  `id` int(11) NOT NULL,
-  `tag` varchar(30) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -180,23 +155,11 @@ ALTER TABLE `notes`
   ADD UNIQUE KEY `file_name` (`file_name`,`user_id`);
 
 --
--- Indexes for table `note_tag`
---
-ALTER TABLE `note_tag`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`),
   ADD KEY `password_resets_token_index` (`token`);
-
---
--- Indexes for table `tags`
---
-ALTER TABLE `tags`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -224,17 +187,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
---
--- AUTO_INCREMENT for table `note_tag`
---
-ALTER TABLE `note_tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `tags`
---
-ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `users`
 --
