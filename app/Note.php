@@ -22,7 +22,7 @@ class Note extends Model
             $this->create($fileName, $userId);
             return true;
         } elseif (isset($fileNameExists)) {
-            $this->remove($fileName, $userId);
+            DB::table('notes')->where([['file_name', '=', $fileName], ['user_id', '=', $userId]])->delete();
             return false;
         } else {
             return false;
@@ -44,6 +44,7 @@ class Note extends Model
 
     public function remove($fileName, $userId) {
         DB::table('notes')->where([['file_name', '=', $fileName], ['user_id', '=', $userId]])->delete();
+        Storage::delete('notes/'.$userId.'/'.$fileName);
     }
 
     public function user()
@@ -58,13 +59,17 @@ class Note extends Model
 
     public function search($fileName = null, $userId = null) {
         if(isset($userId)) {
-            return DB::table('notes')->join('users', 'users.id', '=', 'notes.user_id')
-            ->select('user_id', 'file_name', 'name', 'category_id', 'notes.created_at', 'notes.updated_at')->where([
+            return DB::table('notes')
+            ->join('users', 'users.id', '=', 'notes.user_id')
+            ->join('categories', 'categories.id', '=', 'notes.category_id')
+            ->select('notes.user_id', 'notes.file_name', 'users.name', 'categories.category', 'notes.category_id', 'notes.created_at', 'notes.updated_at')->where([
                 ['notes.user_id', '=', $userId], ['file_name', 'like', '%'.$fileName.'%']
                 ])->orderBy('file_name', 'asc')->paginate(10);
         } else {
-            return DB::table('notes')->join('users', 'users.id', '=', 'notes.user_id')
-            ->select('user_id', 'file_name', 'name', 'category_id', 'notes.created_at', 'notes.updated_at')->where([
+            return DB::table('notes')
+            ->join('users', 'users.id', '=', 'notes.user_id')
+            ->join('categories', 'categories.id', '=', 'notes.category_id')
+            ->select('notes.user_id', 'notes.file_name', 'users.name', 'categories.category', 'notes.category_id', 'notes.created_at', 'notes.updated_at')->where([
                 ['file_name', 'like', '%'.$fileName.'%']
                 ])->orderBy('file_name', 'asc')->paginate(10);
         }

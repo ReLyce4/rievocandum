@@ -44,11 +44,11 @@
 			<div class="row">
 				@if (Auth::user()->id == $note->user_id)
 				<div class="col-md-6">
-					<h5 class="card-title"><a href="{{ route('note.write', ['fileName' => $note->file_name]) }}">{{$note->file_name}}</a></h5>
+					<h5 class="card-title text-capitalize"><a href="{{ route('note.write', ['fileName' => $note->file_name]) }}">{{$note->file_name}}</a></h5>
 				</div>
 				@else
 				<div class="col-md-6">
-					<h5 class="card-title"><a href="{{ route('note.view', ['fileName' => $note->file_name, 'userId' => $note->user_id]) }}">{{$note->file_name}}</a></h5>
+					<h5 class="card-title text-capitalize"><a href="{{ route('note.view', ['fileName' => $note->file_name, 'userId' => $note->user_id]) }}">{{$note->file_name}}</a></h5>
 				</div>
 				@endif
 				<div class="col-md-6">
@@ -57,7 +57,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-					<p class="card-text"><small class="text-muted">Ultima modifica {{$note->updated_at}}</small></p>
+					<p class="card-text text-capitalize"><small class="text-muted">{{$note->category}}</small></p>
 				</div>
 				<div class="col-md-6 text-right">
 					<p class="card-text"><small class="text-muted">Creato il {{$note->created_at}}</small></p>

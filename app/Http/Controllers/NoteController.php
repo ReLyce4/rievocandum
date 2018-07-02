@@ -34,6 +34,10 @@ class NoteController extends Controller
         }
     }
 
+    public function remove(Request $request) {
+        //
+    }
+
     /**
     * @param  \Illuminate\Http\Request  $request
     */
