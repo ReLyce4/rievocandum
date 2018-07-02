@@ -18,6 +18,10 @@ Route::get('/profile/{name}', 'ProfileController@show')->name('profile');
 
 Route::get('note/add', 'NoteController@addInfo')->name('note.add');
 Route::post('note/add', 'NoteController@write')->name('note.add');
+Route::get('note/list', 'NoteController@search')->name('note.list');
+Route::get('note/explore', 'NoteController@search')->name('note.explore');
+Route::get('note/open/{file_name}', 'NoteController@open')->name('note.open');
+Route::get('note/search', 'NoteController@search')->name('note.search');
 
 Route::post('note/save', 'NoteController@save')->name('note.save');
 //Route::get('note/save', 'NoteController@save')->name('note.save');

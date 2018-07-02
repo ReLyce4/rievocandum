@@ -27,7 +27,7 @@
 			<input class="form-control my-2" type="text" name="fileName" placeholder="Inserisci nome documento" required>
 			<label>Nome categoria</label>
 			<input class="form-control my-2" type="text" name="category" placeholder="Inserisci nome categoria" required>
-			<button class="btn btn-primary my-4" type="submit">Scegli nome</button>
+			<button class="btn btn-primary my-2" type="submit">Scegli nome</button>
 		</div>
 	</form>
 	@if($errors->any())

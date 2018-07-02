@@ -20,7 +20,9 @@
 	</div>
 </div>
 <div class="container">
-	<h4>Categoria: {{ $category }}</h4>
+	@if (isset($category))
+		<h4>Categoria: {{ $category }}</h4>
+	@endif
 	@if($errors->any())
 	<div class="alert alert-warning alert-dismissible fade show my-2" role="alert">
 		{{$errors->first()}}

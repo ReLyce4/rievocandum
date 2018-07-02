@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Note;
 use App\Category;
+use App\Exceptions\Handler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -41,6 +42,39 @@ class NoteController extends Controller
         }
     }
 
+    public function open($fileName) {
+        $noteModel = new Note();
+        $categoryModel = new Category();
+
+        $userId = Auth::user()->id;
+        $data['fileName'] = $fileName;
+        
+        if($noteModel->fileNameExists($fileName, $userId)) {
+            $data['editorData'] = $noteModel->show($fileName, $userId);
+            $data['category'] = $categoryModel->getCategoryByFileName($fileName);
+            return view('notes.write', $data);
+        } else {
+            return back()->withErrors(['msg' => 'Il file non esiste']);
+        }
+    }
+
+    /**
+    *@param  \Illuminate\Http\Request  $request
+    */
+    public function search(Request $request) {
+        $noteModel = new Note();
+
+        $fileName = $request->fileName;
+        if(isset($request->userId)) {
+            $userId = Auth::user()->id;
+            $data['list'] = $noteModel->search($fileName, $userId);
+            return view('notes.list', $data);
+        } else {
+            $data['list'] = $noteModel->search($fileName);
+            return view('notes.list', $data);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -58,5 +92,11 @@ class NoteController extends Controller
         $noteModel->storage($fileName, $editorData, $userId);
 
         return date('d F Y H:i:s');
+    }
+
+    public function list() {
+        $noteModel = new Note();
+        $data['list'] = $noteModel->search(null, Auth::user()->id);
+        return view('notes.list', $data);
     }
 }

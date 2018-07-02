@@ -73,7 +73,7 @@
                         <a href="{{ route('note.add') }}"><i class="menu-icon hawcons icon-document-add"></i>Scrivi appunti</a>
                     </li>
                     <li>
-                        <a href="#"><i class="menu-icon hawcons icon-document-list"></i>Lista appunti</a>
+                        <a href="{{ route('note.list', ['userId' => Auth::user()->id]) }}"><i class="menu-icon hawcons icon-document-list"></i>Lista appunti</a>
                     </li>
                     <!--
                     <li class="menu-item-has-children dropdown">
@@ -85,7 +85,7 @@
                     </li>
                     -->
                     <li>
-                        <a href="#"><i class="menu-icon hawcons icon-document-search"></i>Esplora appunti</a>
+                        <a href="{{ route('note.explore') }}"><i class="menu-icon hawcons icon-document-search"></i>Esplora appunti</a>
                     </li>
 
                     <!-- /.menu-title -->
