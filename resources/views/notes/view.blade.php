@@ -13,7 +13,7 @@
 		<div class="page-header float-right">
 			<div class="page-title">
 				<ol class="breadcrumb text-right">
-					<li class="active">Scrivi appunti</li>
+					<li class="active">Visualizza appunti</li>
 				</ol>
 			</div>
 		</div>
@@ -30,14 +30,18 @@
 	@endif
 	<h4>{{ $fileName }}</h4>
 	<p>{{ $category }}</p>
-	<p id="save-datetime"></p>
-	<input type="hidden" value="{{ $fileName }}" id="fileName">
-	<div id="editorContainer">
-		<textarea name="editor" id="editor">
-			@if (isset($editorData))
-				{{ $editorData }}
-			@endif
-		</textarea>
-	</div>
+	<form method="POST" action="{{ route('note.add') }}">
+		@csrf
+		<input type="hidden" value="{{ $fileName }}" name="fileName" id="fileName">
+		<input type="hidden" value="{{ $category }}" name="category" id="category">
+		<button type="submit" class="btn btn-primary"><span class="fa fa-plus-circle"></span> Aggiungi</button>
+		<div id="editorContainer">
+			<textarea name="editorData" id="editor" readonly>
+				@if (isset($editorData))
+					{{ $editorData }}
+				@endif
+			</textarea>
+		</div>
+	</form>
 </div>
 @endsection

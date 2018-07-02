@@ -33,18 +33,24 @@
 			<form class="form-group form-inline float-right" method="GET" action="{{ route('note.search') }}">
 				<div>
 					<input class="form-control" type="text" name="fileName" placeholder="Cerca" required>
-					<input type="hidden" name="userId" value="{{ Auth::user()->id }}">
+					<input type="hidden" name="userId" value="{{ $userId or null }}" >
 					<button class="form-control" type="submit"><span class="fa fa-search"></span></button>
 				</div>
 			</form>
 		</div>
 	</div>
-	@foreach($list as $note)
+	@forelse($list as $note)
 		<div class="card card-body border-light">
 			<div class="row">
+				@if (Auth::user()->id == $note->user_id)
 				<div class="col-md-6">
-					<h5 class="card-title"><a href="{{ route('note.open', ['file_name' => $note->file_name]) }}">{{$note->file_name}}</a></h5>
+					<h5 class="card-title"><a href="{{ route('note.write', ['fileName' => $note->file_name]) }}">{{$note->file_name}}</a></h5>
 				</div>
+				@else
+				<div class="col-md-6">
+					<h5 class="card-title"><a href="{{ route('note.view', ['fileName' => $note->file_name, 'userId' => $note->user_id]) }}">{{$note->file_name}}</a></h5>
+				</div>
+				@endif
 				<div class="col-md-6">
 					<p class="card-text text-right"><a href="{{ route('profile', ['name' => $note->name]) }}">{{$note->name}}</a></p>
 				</div>
@@ -58,7 +64,11 @@
 				</div>
 			</div>
 		</div>
-	@endforeach
+	@empty
+		<div class="text-center">
+			<p>Nessun appunto</p>
+		</div>
+	@endforelse
 	{{ $list->links() }}
 </div>
 @endsection

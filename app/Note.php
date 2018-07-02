@@ -59,12 +59,12 @@ class Note extends Model
     public function search($fileName = null, $userId = null) {
         if(isset($userId)) {
             return DB::table('notes')->join('users', 'users.id', '=', 'notes.user_id')
-            ->select('file_name', 'name', 'category_id', 'notes.created_at', 'notes.updated_at')->where([
-                ['user_id', '=', $userId], ['file_name', 'like', '%'.$fileName.'%']
+            ->select('user_id', 'file_name', 'name', 'category_id', 'notes.created_at', 'notes.updated_at')->where([
+                ['notes.user_id', '=', $userId], ['file_name', 'like', '%'.$fileName.'%']
                 ])->orderBy('file_name', 'asc')->paginate(10);
         } else {
             return DB::table('notes')->join('users', 'users.id', '=', 'notes.user_id')
-            ->select('file_name', 'name', 'category_id', 'notes.created_at', 'notes.updated_at')->where([
+            ->select('user_id', 'file_name', 'name', 'category_id', 'notes.created_at', 'notes.updated_at')->where([
                 ['file_name', 'like', '%'.$fileName.'%']
                 ])->orderBy('file_name', 'asc')->paginate(10);
         }

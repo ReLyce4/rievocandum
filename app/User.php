@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -31,5 +32,23 @@ class User extends Authenticatable
     public function notes()
     {
         return $this->hasMany('App\Note');
+    }
+
+    public function getInfo($name) {
+        return DB::table('users')->where('name', $name)->first();
+    }
+
+    public function getIdByName($name) {
+        $userId = DB::table('users')->where('name', $name)->value('id');
+        if(isset($userId)) {
+            return $userId;
+        } else {
+            return -1;
+        }
+    }
+
+    public function countNotes($name) {
+        $userId = $this->getIdByName($name);
+        return DB::table('notes')->where('user_id', $userId)->count();
     }
 }

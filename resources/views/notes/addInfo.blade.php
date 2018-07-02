@@ -20,7 +20,7 @@
 	</div>
 </div>
 <div class="container">
-	<form method="POST" action="{{ route('note.add') }}">
+	<form method="GET" action="{{ route('note.write') }}">
 		@csrf
 		<div style="max-width:400px">
 			<label>Nome documento</label>

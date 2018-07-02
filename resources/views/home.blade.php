@@ -38,10 +38,10 @@
                                 <a href="{{ route('note.add') }}"><i class="hawcons icon-document-add"></i> Scrivi appunti</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('note.list', ['userId' => Auth::user()->id]) }}"><i class="hawcons icon-document-list"></i> Lista appunti</a>
+                                <a href="{{ route('note.list', ['userId' => Auth::user()->name]) }}"><i class="hawcons icon-document-list"></i> Lista appunti</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('note.list') }}"><i class="hawcons icon-document-search"></i> Esplora appunti</a>
+                                <a href="{{ route('note.explore') }}"><i class="hawcons icon-document-search"></i> Esplora appunti</a>
                             </li>
                         </ul>
                     </div>
