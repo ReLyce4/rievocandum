@@ -43,7 +43,7 @@ class Note extends Model
     }
 
     public function remove($fileName, $userId) {
-        DB::table('notes')->where(['file_name', '=', $fileName], ['user_id', '=', $userId])->delete();
+        DB::table('notes')->where([['file_name', '=', $fileName], ['user_id', '=', $userId]])->delete();
     }
 
     public function user()

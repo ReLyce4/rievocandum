@@ -14,16 +14,16 @@
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/landing', 'LandingController@index')->name('landing');
 Auth::routes();
-Route::get('/profile/{name}', 'ProfileController@show')->name('profile');
+Route::get('/profile/{name}', 'ProfileController@show')->name('profile')->middleware('auth');
 
-Route::get('note/add', 'NoteController@addInfo')->name('note.add');
-Route::post('note/add', 'NoteController@write')->name('note.add');
-Route::get('note/list', 'NoteController@search')->name('note.list');
-Route::get('note/explore', 'NoteController@search')->name('note.explore');
-Route::get('note/open/{file_name}', 'NoteController@open')->name('note.open');
-Route::get('note/search', 'NoteController@search')->name('note.search');
+Route::get('note/add', 'NoteController@addInfo')->name('note.add')->middleware('auth');
+Route::post('note/add', 'NoteController@write')->name('note.add')->middleware('auth');
+Route::get('note/list', 'NoteController@search')->name('note.list')->middleware('auth');
+Route::get('note/explore', 'NoteController@search')->name('note.explore')->middleware('auth');
+Route::get('note/open/{file_name}', 'NoteController@open')->name('note.open')->middleware('auth');
+Route::get('note/search', 'NoteController@search')->name('note.search')->middleware('auth');
 
-Route::post('note/save', 'NoteController@save')->name('note.save');
+Route::post('note/save', 'NoteController@save')->name('note.save')->middleware('auth');
 //Route::get('note/save', 'NoteController@save')->name('note.save');
 
 Route::get('/', function () {

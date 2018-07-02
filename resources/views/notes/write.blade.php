@@ -21,7 +21,7 @@
 </div>
 <div class="container">
 	@if (isset($category))
-		<h4>Categoria: {{ $category }}</h4>
+		<h4 class="my-2">Categoria: {{ $category }}</h4>
 	@endif
 	@if($errors->any())
 	<div class="alert alert-warning alert-dismissible fade show my-2" role="alert">
