@@ -15,6 +15,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/landing', 'LandingController@index')->name('landing');
 Auth::routes();
 Route::get('/profile/{name}', 'ProfileController@show')->name('profile');
+Route::get('Spaced_Repetition', function () {
+return view('spacedRepetition');
+})->name('spacedRepetition')->middleware('auth');
 
 Route::get('note/add', 'NoteController@addInfo')->name('note.add')->middleware('auth');
 Route::post('note/add', 'NoteController@add')->name('note.add')->middleware('auth');

@@ -107,6 +107,10 @@
                     <li>
                         <a href="{{ route('flashcard.explore') }}"><i class="menu-icon hawcons icon-note-search"></i>Esplora flashcard</a>
                     </li>
+                    <h3 class="menu-title">Ripetizione dilazionata</h3>
+                    <li>
+                        <a href="{{ route('spacedRepetition') }}"><i class="menu-icon hawcons icon-search"></i>Scopri di più</a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

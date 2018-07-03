@@ -38,7 +38,7 @@
                 <i class="icon-stop-watch3 m-auto text-blue"></i>
               </div>
               <h3>SRS</h3>
-              <p class="lead mb-0">Gestisci al meglio le tue sessioni di studio ricevendo una notifica nel memonto migliore in cui praticarle</p>
+              <p class="lead mb-0">Gestisci al meglio le tue sessioni di studio ripassando sempre nel momento migliore aumentando l'efficienza</p>
             </div>
           </div>
           <div class="col-lg-4">
