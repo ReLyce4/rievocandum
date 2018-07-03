@@ -1,6 +1,7 @@
 @extends ('layouts.dashboard')
 
 @section ('content')
+<input type="hidden" id="docType" value="note">
 <div class="breadcrumbs">
 	<div class="col-sm-4">
 		<div class="page-header float-left">

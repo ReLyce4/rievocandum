@@ -1,12 +1,12 @@
 @extends ('layouts.dashboard')
 
 @section ('content')
-<input type="hidden" id="docType" value="note">
+<input type="hidden" id="docType" value="flashcard">
 <div class="breadcrumbs">
 	<div class="col-sm-4">
 		<div class="page-header float-left">
 			<div class="page-title">
-				<h1>Appunti</h1>
+				<h1>Flashcard</h1>
 			</div>
 		</div>
 	</div>
@@ -14,7 +14,7 @@
 		<div class="page-header float-right">
 			<div class="page-title">
 				<ol class="breadcrumb text-right">
-					<li class="active">Scrivi appunti</li>
+					<li class="active">Crea flashcard</li>
 				</ol>
 			</div>
 		</div>
@@ -34,9 +34,19 @@
 	<p id="save-datetime"></p>
 	<input type="hidden" value="{{ $fileName }}" id="fileName">
 	<div id="editorContainer">
-		<textarea name="editor" id="editor">
-			@if (isset($editorData))
-				{{ $editorData }}
+		<textarea name="editor" id="editorFront">
+			@if (isset($editorDataFront))
+				{{ $editorDataFront }}
+			@endif
+		</textarea>
+	</div>
+	<h6>Retro:</h6>
+	<button type="button" class="btn btn-primary my-2" onclick="showEditorBack()" id="btnShowEditorBack">Mostra retro</button>
+	<button type="button" class="btn btn-primary my-2" onclick="hideEditorBack()" id="btnHideEditorBack">Nascondi retro</button>
+	<div id="editorBackContainer">
+		<textarea name="editorDataBack" id="editorBack">
+			@if (isset($editorDataBack))
+				{{ $editorDataBack }}
 			@endif
 		</textarea>
 	</div>

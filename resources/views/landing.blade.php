@@ -46,7 +46,7 @@
               <div class="features-icons-icon d-flex">
                 <i class="icon-note m-auto text-blue"></i>
               </div>
-              <h3>Flashcard/Quiz</h3>
+              <h3>Flashcard</h3>
               <p class="lead mb-0">Utilizza un potente strumento di creazione delle flashcard strutturate con lo schema domanda-risposta</p>
             </div>
           </div>
@@ -81,7 +81,7 @@
         <div class="row no-gutters">
           <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/bg-showcase-3.jpg');"></div>
           <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-            <h2>Flashcard/Quiz</h2>
+            <h2>Flashcard</h2>
             <p class="lead mb-0">
               Le flashcard sono considerate come uno dei migliori metodi di studio per l'apprendimento di piccole informazioni come brevi sintesi o definizioni.
               Sono molto usate infatti per lo studio delle lingue(straniere e non) poiché permettono una facile ed efficiente memorizzazione del lessico e delle regole sintattiche.

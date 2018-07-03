@@ -34,7 +34,6 @@
 
 </head>
 <body>
-
         <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
@@ -91,10 +90,10 @@
                     <!-- /.menu-title -->
                     <h3 class="menu-title">Flashcard</h3>
                     <li>
-                        <a href="#"><i class="menu-icon hawcons icon-note-add"></i>Crea flashcard</a>
+                        <a href="{{ route('flashcard.add') }}"><i class="menu-icon hawcons icon-note-add"></i>Crea flashcard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="menu-icon hawcons icon-note-list"></i>Lista flashcard</a>
+                        <a href="{{ route('flashcard.list', ['name' => Auth::user()->name]) }}"><i class="menu-icon hawcons icon-note-list"></i>Lista flashcard</a>
                     </li>
                     <!--
                     <li class="menu-item-has-children dropdown">
@@ -106,7 +105,7 @@
                     </li>
                     -->
                     <li>
-                        <a href="#"><i class="menu-icon hawcons icon-note-search"></i>Esplora flashcard</a>
+                        <a href="{{ route('flashcard.explore') }}"><i class="menu-icon hawcons icon-note-search"></i>Esplora flashcard</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

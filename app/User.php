@@ -51,4 +51,9 @@ class User extends Authenticatable
         $userId = $this->getIdByName($name);
         return DB::table('notes')->where('user_id', $userId)->count();
     }
+
+    public function countFlashcards($name) {
+        $userId = $this->getIdByName($name);
+        return DB::table('flashcards')->where('user_id', $userId)->count();
+    }
 }

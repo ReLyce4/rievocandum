@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Note;
+use App\Flashcard;
 use App\User;
 use App\Category;
 use App\Exceptions\Handler;
@@ -10,16 +10,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
-class NoteController extends Controller
+class FlashcardController extends Controller
 {
     public function addInfo() {
-        return view('notes.addInfo');
+        return view('flashcards.addInfo');
     }
     /**
     * @param  \Illuminate\Http\Request  $request
     */
     public function add(Request $request) {
-        $noteModel = new Note();
+        $flashcardModel = new Flashcard();
         $categoryModel = new Category();
 
         $data['fileName'] = $request->input('fileName');
@@ -29,22 +29,22 @@ class NoteController extends Controller
 
 
 
-        if($noteModel->fileNameExists($data['fileName'], Auth::user()->id, $categoryId)) {
+        if($flashcardModel->fileNameExists($data['fileName'], Auth::user()->id, $categoryId)) {
             return back()->withErrors(['msg' => 'Nome file in uso']);
         } else {
-            $noteModel->create($data['fileName'], Auth::user()->id, $categoryId);
-            return view('notes.write', $data);
+            $flashcardModel->create($data['fileName'], Auth::user()->id, $categoryId);
+            return view('flashcards.write', $data);
         }
     }
 
     public function remove(Request $request) {
         $data['fileName'] = $request->input('fileName');
         if($request->isMethod('post')) {
-            $noteModel = new Note();
-            $noteModel->remove($data['fileName'], Auth::user()->id);
-            return redirect('note/list/'.Auth::user()->name);
+            $flashcardModel = new Flashcard();
+            $flashcardModel->remove($data['fileName'], Auth::user()->id);
+            return redirect('flashcard/list/'.Auth::user()->name);
         } elseif(isset($data['fileName'])) {
-            return view('notes.remove', $data);
+            return view('flashcards.remove', $data);
         } else {
             return abort('404');
         }
@@ -55,7 +55,7 @@ class NoteController extends Controller
     */
     public function write(Request $request)
     {
-        $noteModel = new Note();
+        $flashcardModel = new Flashcard();
         $categoryModel = new Category();
 
         $fileName = $request->input('fileName');
@@ -64,32 +64,33 @@ class NoteController extends Controller
         $userId = Auth::user()->id;
 
         $data['fileName'] = $fileName;
-        
-        if($noteModel->fileNameExists($fileName, $userId, $categoryId)) {
-            $data['editorData'] = $noteModel->show($fileName, $userId);
+        if($flashcardModel->fileNameExists($fileName, $userId, $categoryId)) {
+            $data['editorDataFront'] = $flashcardModel->showFront($fileName, $userId);
+            $data['editorDataBack'] = $flashcardModel->showBack($fileName, $userId);
             $data['category'] = $categoryModel->getCategoryByFileName($fileName);
-            return view('notes.write', $data)->withErrors(['msg' => 'Apertura nota']);
+            return view('flashcards.write', $data)->withErrors(['msg' => 'Apertura flashcard']);
         } else {
             $categoryModel->create($category);
             $data['category'] = $category;
             $categoryId = $categoryModel->getIdByCategory($category);
-            $noteModel->create($fileName, $userId, $categoryId);
-            return view('notes.write', $data);
+            $flashcardModel->create($fileName, $userId, $categoryId);
+            return view('flashcards.write', $data);
         }
     }
 
     public function view(Request $request) {
-        $noteModel = new Note();
+        $flashcardModel = new Flashcard();
         $categoryModel = new Category();
 
         $userId = $request->input('userId');
         $data['fileName'] = $request->input('fileName');
         $data['category'] = $request->input('category');
         
-        if($noteModel->fileNameExists($data['fileName'], $userId, $data['category'])) {
-            $data['editorData'] = $noteModel->show($data['fileName'], $userId);
+        if($flashcardModel->fileNameExists($data['fileName'], $userId, $data['category'])) {
+            $data['editorDataFront'] = $flashcardModel->showFront($data['fileName'], $userId);
+            $data['editorDataBack'] = $flashcardModel->showBack($data['fileName'], $userId);
             $data['category'] = $categoryModel->getCategoryByFileName($data['fileName']);
-            return view('notes.view', $data);
+            return view('flashcards.view', $data);
         } else {
             return back()->withErrors(['msg' => 'Il file non esiste']);
         }
@@ -99,16 +100,16 @@ class NoteController extends Controller
     *@param  \Illuminate\Http\Request  $request
     */
     public function search(Request $request) {
-        $noteModel = new Note();
+        $flashcardModel = new Flashcard();
 
         $fileName = $request->fileName;
         if(isset($request->userId)) {
             $data['userId'] = $request->userId;
-            $data['list'] = $noteModel->search($fileName, $data['userId']);
-            return view('notes.list', $data);
+            $data['list'] = $flashcardModel->search($fileName, $data['userId']);
+            return view('flashcards.list', $data);
         } else {
-            $data['list'] = $noteModel->search($fileName);
-            return view('notes.list', $data);
+            $data['list'] = $flashcardModel->search($fileName);
+            return view('flashcards.list', $data);
         }
     }
 
@@ -121,22 +122,23 @@ class NoteController extends Controller
     public function save(Request $request)
     {
         $fileName = $request->input('fileName');
-        $editorData = $request->input('editorData');
+        $editorDataFront = $request->input('editorDataFront');
+        $editorDataBack = $request->input('editorDataBack');
         $userId = Auth::user()->id;
 
-        $noteModel = new Note();
+        $flashcardModel = new Flashcard();
 
-        $noteModel->storage($fileName, $editorData, $userId);
+        $flashcardModel->storage($fileName, $editorDataFront, $editorDataBack, $userId);
 
         date_default_timezone_set('Europe/Rome');
         return date('d F Y H:i');
     }
 
     public function list($name) {
-        $noteModel = new Note();
+        $flashcardModel = new Flashcard();
         $userModel = new User();
         $data['userId'] = $userModel->getIdByName($name);
-        $data['list'] = $noteModel->search(null, $data['userId']);
-        return view('notes.list', $data);
+        $data['list'] = $flashcardModel->search(null, $data['userId']);
+        return view('flashcards.list', $data);
     }
 }
