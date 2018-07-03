@@ -25,8 +25,9 @@ class FlashcardController extends Controller
         $data['fileName'] = $request->input('fileName');
         $data['category'] = $request->input('category');
         $categoryId = $categoryModel->getIdByCategory($data['category']);
-        $data['editorData'] = $request->input('editorData');
-
+        $data['editorDataFront'] = $request->input('editorDataFront');
+        $data['editorDataBack'] = $request->input('editorDataBack');
+        return $categoryId;
 
 
         if($flashcardModel->fileNameExists($data['fileName'], Auth::user()->id, $categoryId)) {
@@ -67,7 +68,7 @@ class FlashcardController extends Controller
         if($flashcardModel->fileNameExists($fileName, $userId, $categoryId)) {
             $data['editorDataFront'] = $flashcardModel->showFront($fileName, $userId);
             $data['editorDataBack'] = $flashcardModel->showBack($fileName, $userId);
-            $data['category'] = $categoryModel->getCategoryByFileName($fileName);
+            $data['category'] = $categoryModel->getCategoryByFileName($fileName, "flashcard");
             return view('flashcards.write', $data)->withErrors(['msg' => 'Apertura flashcard']);
         } else {
             $categoryModel->create($category);
@@ -89,7 +90,7 @@ class FlashcardController extends Controller
         if($flashcardModel->fileNameExists($data['fileName'], $userId, $data['category'])) {
             $data['editorDataFront'] = $flashcardModel->showFront($data['fileName'], $userId);
             $data['editorDataBack'] = $flashcardModel->showBack($data['fileName'], $userId);
-            $data['category'] = $categoryModel->getCategoryByFileName($data['fileName']);
+            $data['category'] = $categoryModel->getCategoryByFileName($data['fileName'], "flashcard");
             return view('flashcards.view', $data);
         } else {
             return back()->withErrors(['msg' => 'Il file non esiste']);

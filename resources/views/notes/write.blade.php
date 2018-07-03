@@ -33,7 +33,7 @@
 	<p id="save-datetime"></p>
 	<input type="hidden" value="{{ $fileName }}" id="fileName">
 	<div id="editorContainer">
-		<textarea name="editor" id="editor">
+		<textarea name="editorData" id="editor">
 			@if (isset($editorData))
 				{{ $editorData }}
 			@endif

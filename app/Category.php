@@ -18,9 +18,14 @@ class Category extends Model
         return DB::table('categories')->where('category', $category)->value('id');
     }
 
-    public function getCategoryByFileName($fileName) {
-        $categoryId = DB::table('notes')->where('file_name', $fileName)->value('category_id');
-        return DB::table('categories')->where('id', $categoryId)->value('category');
+    public function getCategoryByFileName($fileName, $fileType) {
+        if($fileType == "note"){
+            $categoryId = DB::table('notes')->where('file_name', $fileName)->value('category_id');
+            return DB::table('categories')->where('id', $categoryId)->value('category');
+        } else if($fileType == "flashcard") {
+            $categoryId = DB::table('flashcards')->where('file_name', $fileName)->value('category_id');
+            return DB::table('categories')->where('id', $categoryId)->value('category');
+        }
     }
 
     public function notes() {

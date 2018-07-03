@@ -27,8 +27,6 @@ class NoteController extends Controller
         $categoryId = $categoryModel->getIdByCategory($data['category']);
         $data['editorData'] = $request->input('editorData');
 
-
-
         if($noteModel->fileNameExists($data['fileName'], Auth::user()->id, $categoryId)) {
             return back()->withErrors(['msg' => 'Nome file in uso']);
         } else {
@@ -67,7 +65,7 @@ class NoteController extends Controller
         
         if($noteModel->fileNameExists($fileName, $userId, $categoryId)) {
             $data['editorData'] = $noteModel->show($fileName, $userId);
-            $data['category'] = $categoryModel->getCategoryByFileName($fileName);
+            $data['category'] = $categoryModel->getCategoryByFileName($fileName, "note");
             return view('notes.write', $data)->withErrors(['msg' => 'Apertura nota']);
         } else {
             $categoryModel->create($category);
@@ -88,7 +86,7 @@ class NoteController extends Controller
         
         if($noteModel->fileNameExists($data['fileName'], $userId, $data['category'])) {
             $data['editorData'] = $noteModel->show($data['fileName'], $userId);
-            $data['category'] = $categoryModel->getCategoryByFileName($data['fileName']);
+            $data['category'] = $categoryModel->getCategoryByFileName($data['fileName'], "note");
             return view('notes.view', $data);
         } else {
             return back()->withErrors(['msg' => 'Il file non esiste']);
