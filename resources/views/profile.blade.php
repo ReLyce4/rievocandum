@@ -104,6 +104,15 @@
                             <a href="{{ route('note.list', ['name' => $user->name]) }}" class="help-block">Visualizza</a>
                         </div>
                     </li>
+                    <li class="list-group-item">
+                        <div class="col-md-2">
+                            <label class="form-control-label">Numero flashcard create</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" value="{{ $countFlashcards }}" readonly>
+                            <a href="{{ route('flashcard.list', ['name' => $user->name]) }}" class="help-block">Visualizza</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

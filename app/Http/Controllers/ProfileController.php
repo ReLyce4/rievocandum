@@ -16,6 +16,7 @@ class ProfileController extends Controller
         $data['user'] = $userModel->getInfo($name);
         if(isset($data['user'])) {
             $data['countNotes'] = $userModel->countNotes($name);
+            $data['countFlashcards'] = $userModel->countFlashcards($name);
             return view('profile', $data);
         } else {
             abort('404');

@@ -60,13 +60,13 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <a href="#"><i class="hawcons icon-note-add"></i> Crea flashcard</a>
+                                <a href="{{ route('flashcard.add') }}"><i class="hawcons icon-note-add"></i> Crea flashcard</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="#"><i class="hawcons icon-note-list"></i> Lista flashcard</a>
+                                <a href="{{ route('flashcard.list', ['name' => Auth::user()->name]) }}"><i class="hawcons icon-note-list"></i> Lista flashcard</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="#"><i class="hawcons icon-note-search"></i> Esplora flashcard</a>
+                                <a href="{{ route('flashcard.explore') }}"><i class="hawcons icon-note-search"></i> Esplora flashcard</a>
                             </li>
                         </ul>
                     </div>
