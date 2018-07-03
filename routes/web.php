@@ -18,6 +18,8 @@ Route::get('/profile/{name}', 'ProfileController@show')->name('profile');
 
 Route::get('note/add', 'NoteController@addInfo')->name('note.add')->middleware('auth');
 Route::post('note/add', 'NoteController@add')->name('note.add')->middleware('auth');
+Route::get('note/remove', 'NoteController@remove')->name('note.remove')->middleware('auth');
+Route::post('note/remove', 'NoteController@remove')->name('note.remove')->middleware('auth');
 Route::get('note/write', 'NoteController@write')->name('note.write')->middleware('auth');
 Route::get('note/list/{name}', 'NoteController@list')->name('note.list')->middleware('auth');
 Route::get('note/explore', 'NoteController@search')->name('note.explore')->middleware('auth');

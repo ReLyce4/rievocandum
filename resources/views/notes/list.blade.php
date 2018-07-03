@@ -44,11 +44,16 @@
 			<div class="row">
 				@if (Auth::user()->id == $note->user_id)
 				<div class="col-md-6">
-					<h5 class="card-title text-capitalize"><a href="{{ route('note.write', ['fileName' => $note->file_name]) }}">{{$note->file_name}}</a></h5>
+					<h5 class="card-title text-capitalize">
+						<a href="{{ route('note.write', ['fileName' => $note->file_name]) }}">{{$note->file_name}}</a>
+						<small> &bull; <a class="text-danger" href="{{ route('note.remove', ['fileName' => $note->file_name]) }}">Elimina</a></small>
+					</h5>
 				</div>
 				@else
 				<div class="col-md-6">
-					<h5 class="card-title text-capitalize"><a href="{{ route('note.view', ['fileName' => $note->file_name, 'userId' => $note->user_id]) }}">{{$note->file_name}}</a></h5>
+					<h5 class="card-title text-capitalize">
+						<a href="{{ route('note.view', ['fileName' => $note->file_name, 'userId' => $note->user_id, 'category' => $note->category]) }}">{{$note->file_name}}</a>
+					</h5>
 				</div>
 				@endif
 				<div class="col-md-6">

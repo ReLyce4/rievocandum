@@ -22,20 +22,34 @@ class NoteController extends Controller
     */
     public function add(Request $request) {
         $noteModel = new Note();
+        $categoryModel = new Category();
 
         $data['fileName'] = $request->input('fileName');
         $data['category'] = $request->input('category');
+        $categoryId = $categoryModel->getIdByCategory($data['category']);
         $data['editorData'] = $request->input('editorData');
 
-        if($noteModel->fileNameExists($data['fileName'], Auth::user()->id)) {
+
+
+        if($noteModel->fileNameExists($data['fileName'], Auth::user()->id, $categoryId)) {
             return back()->withErrors(['msg' => 'Nome file in uso']);
         } else {
+            $noteModel->create($data['fileName'], Auth::user()->id, $categoryId);
             return view('notes.write', $data);
         }
     }
 
     public function remove(Request $request) {
-        //
+        $data['fileName'] = $request->input('fileName');
+        if($request->isMethod('post')) {
+            $noteModel = new Note();
+            $noteModel->remove($data['fileName'], Auth::user()->id);
+            return redirect('note/list/'.Auth::user()->name);
+        } elseif(isset($data['fileName'])) {
+            return view('notes.remove', $data);
+        } else {
+            return abort('404');
+        }
     }
 
     /**
@@ -48,18 +62,19 @@ class NoteController extends Controller
 
         $fileName = $request->input('fileName');
         $category = $request->input('category');
+        $categoryId = $categoryModel->getIdByCategory($category);
         $userId = Auth::user()->id;
 
         $data['fileName'] = $fileName;
         
-        if($noteModel->fileNameExists($fileName, $userId)) {
+        if($noteModel->fileNameExists($fileName, $userId, $categoryId)) {
             $data['editorData'] = $noteModel->show($fileName, $userId);
             $data['category'] = $categoryModel->getCategoryByFileName($fileName);
             return view('notes.write', $data)->withErrors(['msg' => 'Apertura nota']);
         } else {
             $categoryModel->create($category);
             $data['category'] = $category;
-            $categoryId = $categoryModel->getId($category);
+            $categoryId = $categoryModel->getIdByCategory($category);
             $noteModel->create($fileName, $userId, $categoryId);
             return view('notes.write', $data);
         }
@@ -71,8 +86,9 @@ class NoteController extends Controller
 
         $userId = $request->input('userId');
         $data['fileName'] = $request->input('fileName');
+        $data['category'] = $request->input('category');
         
-        if($noteModel->fileNameExists($data['fileName'], $userId)) {
+        if($noteModel->fileNameExists($data['fileName'], $userId, $data['category'])) {
             $data['editorData'] = $noteModel->show($data['fileName'], $userId);
             $data['category'] = $categoryModel->getCategoryByFileName($data['fileName']);
             return view('notes.view', $data);

@@ -13,7 +13,7 @@
 		<div class="page-header float-right">
 			<div class="page-title">
 				<ol class="breadcrumb text-right">
-					<li class="active">Visualizza appunti</li>
+					<li class="active">Elimina</li>
 				</ol>
 			</div>
 		</div>
@@ -28,20 +28,12 @@
 		</button>
 	</div>
 	@endif
-	<h4>{{ $fileName }}</h4>
-	<p>{{ $category }}</p>
-	<form method="POST" action="{{ route('note.add') }}">
+	<h6>Sei sicuro di voler eliminare l'appunto "{{ $fileName }}"?</h6>
+	<form method="POST" class="my-2" action="{{ route('note.remove') }}">
 		@csrf
 		<input type="hidden" value="{{ $fileName }}" name="fileName" id="fileName">
-		<input type="hidden" value="{{ $category }}" name="category" id="category">
-		<button type="submit" class="btn btn-primary my-2"><span class="fa fa-plus-circle"></span> Aggiungi</button>
-		<div id="editorContainer">
-			<textarea name="editorData" id="editorReadOnly" readonly>
-				@if (isset($editorData))
-					{{ $editorData }}
-				@endif
-			</textarea>
-		</div>
+		<button type="submit" class="btn btn-danger">Elimina</button>
+		<a href="{{ URL::previous() }}" class="btn btn-secondary">Annulla</a>
 	</form>
 </div>
 @endsection

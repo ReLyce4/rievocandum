@@ -12,14 +12,14 @@ class Note extends Model
         Storage::put('notes/'.$userId.'/'.$fileName, $editorData);
     }
 
-    public function fileNameExists($fileName, $userId) {
+    public function fileNameExists($fileName, $userId, $categoryId) {
         $fileNameExists = DB::table('notes')->where([
             ['file_name', '=', $fileName], ['user_id', '=', $userId]
             ])->value('id');
         if(isset($fileNameExists) && Storage::disk('local')->exists('notes/'.$userId.'/'.$fileName)) {
             return true;
         } elseif(Storage::disk('local')->exists('notes/'.$userId.'/'.$fileName)) {
-            $this->create($fileName, $userId);
+            $this->create($fileName, $userId, $categoryId);
             return true;
         } elseif (isset($fileNameExists)) {
             DB::table('notes')->where([['file_name', '=', $fileName], ['user_id', '=', $userId]])->delete();

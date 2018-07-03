@@ -22,5 +22,8 @@ jQuery( document ).ready(function() {
 				}
 			});
 		}, 3000);
+	} else if(document.getElementById('editorReadOnly')) {
+		var editor = CKEDITOR.replace('editorReadOnly');
+		CKFinder.setupCKEditor( editor );
 	}
 });

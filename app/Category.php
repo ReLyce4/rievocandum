@@ -14,7 +14,7 @@ class Category extends Model
         }
     }
 
-    public function getId($category) {
+    public function getIdByCategory($category) {
         return DB::table('categories')->where('category', $category)->value('id');
     }
 
